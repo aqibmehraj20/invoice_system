@@ -26,26 +26,27 @@ include 'base.php';
             <?php
             include 'dbcon.php';
 
-            $selectquery = "select * from customer";
+            $selectquery = $con -> real_query ("SELECT * from customer");
+            $result = $con -> query($selectquery);
 
-            $query = mysqli_query($con, $selectquery);
+           
+            print_r($selectquery);
 
-
-            while ($result = mysqli_fetch_assoc($query)) {
+            while ($row = $result -> fetch_array()) {
 
             ?>
 
                 <tr>
-                    <td><?php echo $result['cname'];   ?></td>
-                    <td><?php echo $result['caddress'];   ?></td>
-                    <td><?php echo $result['cnumber'];   ?></td>
+                    <td><?php echo $row['cname'];   ?></td>
+                    <td><?php echo $row['caddress'];   ?></td>
+                    <td><?php echo $row['cnumber'];   ?></td>
                     <td class="text-center">
                         <div class="row">
                             <div class="col-6 ">
-                                <a href="updatecustomer.php?id=<?php echo $result['cid'];   ?>"><i class="fas fa-pen-square"></i> Edit</a>
+                                <a href="updatecustomer.php?id=<?php echo $row['cid'];   ?>"><i class="fas fa-pen-square"></i> Edit</a>
                             </div>
                             <div class="col-6">
-                                <a href="deletecustomer.php?id=<?php echo $result['cid'];   ?>"><i class="fas fa-trash"></i> Delete</a>
+                                <a href="deletecustomer.php?id=<?php echo $row['cid'];   ?>"><i class="fas fa-trash"></i> Delete</a>
                             </div>
                         </div>
                     </td>

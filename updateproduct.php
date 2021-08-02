@@ -30,15 +30,15 @@ if (isset($_POST['submit'])) {
 
     $id = $_GET['id'];
     
-    $productname = mysqli_real_escape_string( $con, $_POST['pname']);
-    $productcode = mysqli_real_escape_string( $con, $_POST['pcode']);
-    $productprice = mysqli_real_escape_string( $con, $_POST['pprice']);
+    $productname = $con -> real_escape_string($_POST['pname']);
+    $productcode = $con -> real_escape_string($_POST['pcode']);
+    $productprice = $con -> real_escape_string($_POST['pprice']);
 
     $updatequery = " update product set pid=$id, pname='$productname', pcode='$productcode', pprice='$productprice' where pid=$id";
 
-    $query = mysqli_query($con, $updatequery);
+    $con -> real_query ($updatequery);
 
-    if ($query) {
+    if ($con) {
 ?>
         <script type="text/javascript">
             window.location = "productlist.php";

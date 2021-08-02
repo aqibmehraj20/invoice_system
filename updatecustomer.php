@@ -30,15 +30,15 @@ $result = mysqli_fetch_assoc($query);
 if (isset($_POST['submit'])) {
 
     $id = $_GET['id'];
-    $customername = mysqli_real_escape_string( $con, $_POST['cname']);
-    $customeraddress = mysqli_real_escape_string( $con, $_POST['caddress']);
-    $customernumber = mysqli_real_escape_string( $con, $_POST['cnumber']);
+    $customername = $con -> real_escape_string($_POST['cname']);
+    $customeraddress =$con -> real_escape_string($_POST['caddress']);
+    $customernumber = $con -> real_escape_string($_POST['cnumber']);
 
     $updatequery = " update customer set cid=$id, cname='$customername', caddress='$customeraddress', cnumber='$customernumber' where cid=$id";
 
-    $query = mysqli_query($con, $updatequery);
+    $con -> real_query($updatequery);
 
-    if ($query) {
+    if ($con) {
 ?>
         <script type="text/javascript">
             window.location = "customerlist.php";

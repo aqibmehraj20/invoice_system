@@ -6,9 +6,9 @@ $id = $_GET['id'];
 
 $deletequery = "delete from product where pid=$id";
 
-$query = mysqli_query($con, $deletequery);
+$con -> real_query($deletequery);
 
-if ($query) {
+if ($con) {
 ?>
     <script type="text/javascript">
         window.location = "productlist.php";

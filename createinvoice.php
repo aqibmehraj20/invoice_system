@@ -102,16 +102,16 @@ include 'dbcon.php';
 include 'dbcon.php';
 
 if (isset($_POST['submit'])) {
-    $customer = mysqli_real_escape_string( $con, $_POST['customer']);
-    $product =  implode(',',$_POST['product']);
+    $customer = $con -> real_escape_string($_POST['customer']);
+    $product = $con -> real_escape_string (implode(',',$_POST['product']));
     // echo ($product);die;
-    $amount = mysqli_real_escape_string( $con, $_POST['amount']);
+    $amount =  $con -> real_escape_string ( $_POST['amount']);
 
     $insertquery = "INSERT INTO invoice( customer, product, amount) values('$customer', '$product', '$amount')";
 
-    $query = mysqli_query($con, $insertquery);
+    $con -> real_query($insertquery);
 
-    if ($query) {
+    if ($con) {
 ?>
         <script type="text/javascript">
             window.location = "invoicelist.php";
