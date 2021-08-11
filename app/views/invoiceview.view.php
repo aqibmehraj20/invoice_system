@@ -209,7 +209,7 @@ use App\Core\App;
 <?php endforeach; ?>
 <div class="text-center">
     <button type="submit" onclick="imprimir()" class="btn btn-success col-2 mt-4">print</button>
-    <a href="invoicelist.php" class="btn btn-danger col-2 mt-4">Cancel</a>
+    <a href="invoicelist" class="btn btn-danger col-2 mt-4">Cancel</a>
 </div>
 <script type="text/javascript">
     function imprimir() {
